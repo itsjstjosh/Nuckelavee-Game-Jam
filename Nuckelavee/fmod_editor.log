@@ -9,73 +9,95 @@
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000002948FBE9A98 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000029503FF39D8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
+[LOG] SystemI::createSound                     : filename = ../audio-syteem/Build/Desktop/Ambinace.bank : mode 02010081
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::getAsyncThread              : index = 0 / 5
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000294832959F8, queue head = 000002948D264408, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000294832959F8
+[LOG] SystemI::createSoundInternal             :     Create name='../audio-syteem/Build/Desktop/Ambinace.bank', mode=0x02010081
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9440832
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3072
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000294EF058138
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Ambincelevel1', format=5, channels=2, frequency=48000, lengthbytes=4261504, lengthpcm=16789248, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.058655.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000294832959F8
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002948F2D0368, queue head = 000002948D264408, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002948F2D0368
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002948F2D0368
+[WRN] FMOD_OS_Net_Listen                       : Cannot listen for connections, port 9264 is currently in use.
+[LOG] SoundI::release                          : Ambincelevel1 (00000294832959F8)
+[LOG] SoundI::release                          :     Ambincelevel1 (00000294AFCCD4A8)
+[LOG] SoundI::release                          :     Ambincelevel1 (000002948F2D0368)
 [LOG] SystemI::createSound                     : filename = ../audio-syteem/Build/Desktop/Ambinace.bank : mode 02010081
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
 [LOG] AsyncThread::getAsyncThread              : index = 0 / 5
-[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 114688, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002948D272548, queue head = 000002948D272828, queue count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002948D272548
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000294838C28F8, queue head = 000002948D264408, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000294838C28F8
 [LOG] SystemI::createSoundInternal             :     Create name='../audio-syteem/Build/Desktop/Ambinace.bank', mode=0x02010081
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
 [LOG] SystemI::createSoundInternal             :     exinfo->length             = 9440832
 [LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3072
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000002948EBBDCA8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000002948F5C8558
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Ambincelevel1', format=5, channels=2, frequency=48000, lengthbytes=4261504, lengthpcm=16789248, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.058655.
-[LOG] Thread::initThread                       :     Init FMOD file thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002948D272548
-[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000002948D272868, queue head = 000002948D272828, queue count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002948D272868
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002948D272868
-[LOG] SoundI::release                          : Ambincelevel1 (000002948D272548)
-[LOG] SoundI::release                          :     Ambincelevel1 (0000029483D43078)
-[LOG] SoundI::release                          :     Ambincelevel1 (000002948D272868)
-[LOG] SoundI::release                          :  (0000029481B8A768)
-[LOG] SoundI::release                          :     dragon-studio-cry-of-pain-357978 (00000294813FE9A8)
-[LOG] SoundI::release                          :  (0000029481B8A4A8)
-[LOG] SoundI::release                          :     water1 (00000294813FEB28)
-[LOG] SoundI::release                          :  (000002948D2A7088)
-[LOG] SoundI::release                          :     water3 (000002935A7D0C28)
-[LOG] SoundI::release                          :  (0000029481B8A088)
-[LOG] SoundI::release                          :     water2 (00000294813FEE28)
-[LOG] SoundI::release                          :  (0000029481B8AB88)
-[LOG] SoundI::release                          :     water4 (00000294813FECA8)
-[LOG] SoundI::release                          :  (000002948D2A6B08)
-[LOG] SoundI::release                          :     freesound_community-running-in-grass-6237 (000002935A7D01A8)
-[LOG] SoundI::release                          :  (0000029481B8ACE8)
-[LOG] SoundI::release                          :     footsteps1 (00000294813FEFA8)
-[LOG] SoundI::release                          :  (0000029481B8AE48)
-[LOG] SoundI::release                          :     footsteps2 (00000294813FF428)
-[LOG] SoundI::release                          :  (0000029481B8AA28)
-[LOG] SoundI::release                          :     footsteps3 (00000294813FF2A8)
-[LOG] SoundI::release                          :  (0000029481B8A608)
-[LOG] SoundI::release                          :     footsteps4 (000002935A7D07A8)
-[LOG] SoundI::release                          :  (000002948D2A6C68)
-[LOG] SoundI::release                          :     stone1 (000002935A7D04A8)
-[LOG] SoundI::release                          :  (000002948D2A78C8)
-[LOG] SoundI::release                          :     stone2 (000002935A7D0928)
-[LOG] SoundI::release                          :  (0000029481B8A348)
-[LOG] SoundI::release                          :     stone3 (00000294813FE828)
-[LOG] SoundI::release                          :  (000002948D2A7608)
-[LOG] SoundI::release                          :     stone4 (000002935A7D0328)
-[LOG] SoundI::release                          :  (000002948D2A7768)
-[LOG] SoundI::release                          :     stone5 (000002935A7D0F28)
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000294838C28F8
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000294EF5054C8, queue head = 000002948D264408, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000294EF5054C8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000294EF5054C8
+[WRN] FMOD_OS_Net_Listen                       : Cannot listen for connections, port 9264 is currently in use.
+[LOG] SoundI::release                          : Ambincelevel1 (00000294838C28F8)
+[LOG] SoundI::release                          :     Ambincelevel1 (00000294BD03C208)
+[LOG] SoundI::release                          :     Ambincelevel1 (00000294EF5054C8)
+[LOG] SoundI::release                          :  (000002950606EF58)
+[LOG] SoundI::release                          :     dragon-studio-cry-of-pain-357978 (00000294EF4DDF98)
+[LOG] SoundI::release                          :  (000002950606FBB8)
+[LOG] SoundI::release                          :     water1 (00000294EF4DE898)
+[LOG] SoundI::release                          :  (0000029506070D98)
+[LOG] SoundI::release                          :     water3 (00000294EF4DC018)
+[LOG] SoundI::release                          :  (00000295060727B8)
+[LOG] SoundI::release                          :     water2 (00000294EF4DC618)
+[LOG] SoundI::release                          :  (000002950606FFD8)
+[LOG] SoundI::release                          :     water4 (00000294EF4DCA98)
+[LOG] SoundI::release                          :  (0000029506071058)
+[LOG] SoundI::release                          :     freesound_community-running-in-grass-6237 (00000294EF4DE598)
+[LOG] SoundI::release                          :  (0000029506070138)
+[LOG] SoundI::release                          :     footsteps1 (00000294EF4DCD98)
+[LOG] SoundI::release                          :  (000002950606F798)
+[LOG] SoundI::release                          :     footsteps2 (00000294EF4DE118)
+[LOG] SoundI::release                          :  (000002950606FE78)
+[LOG] SoundI::release                          :     footsteps3 (00000294EF4DE298)
+[LOG] SoundI::release                          :  (0000029506070558)
+[LOG] SoundI::release                          :     footsteps4 (00000294EF4DF198)
+[LOG] SoundI::release                          :  (0000029506070298)
+[LOG] SoundI::release                          :     stone1 (00000294EF4DE418)
+[LOG] SoundI::release                          :  (00000295060724F8)
+[LOG] SoundI::release                          :     stone2 (00000294EF4DE718)
+[LOG] SoundI::release                          :  (00000295060703F8)
+[LOG] SoundI::release                          :     stone3 (00000294EF4DBA18)
+[LOG] SoundI::release                          :  (00000295060706B8)
+[LOG] SoundI::release                          :     stone4 (00000294EF4DBB98)
+[LOG] SoundI::release                          :  (000002950606F8F8)
+[LOG] SoundI::release                          :     stone5 (00000294EF4DD098)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
@@ -86,3 +108,4 @@
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] SystemI::closeInternal                   : Closed.
+[ERR] ~Global                                  : assertion: 'gSystemInitCount == 0' failed

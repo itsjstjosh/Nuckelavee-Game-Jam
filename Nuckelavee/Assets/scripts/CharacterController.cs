@@ -2,9 +2,12 @@ using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.Burst.CompilerServices;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public enum CharacterState
 {
@@ -16,6 +19,10 @@ public enum CharacterState
 
 public class CharacterController : MonoBehaviour
 {
+
+    public int Health = 100;
+    public bool InAttackRange = false;
+    private enemyController currentEnemy;
 
     public CharacterState movePlayerState = CharacterState.IDLE;
 
@@ -40,6 +47,7 @@ public class CharacterController : MonoBehaviour
     private bool _IsGoingRight = true;
     private bool _PlayerStateChangd = false;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +63,27 @@ public class CharacterController : MonoBehaviour
     {
         UpdateFootSteps();
         _PlayerStateChangd = false;
+
+        if(Health <= 0)
+        {
+            string currentScene = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentScene);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if(InAttackRange)
+            {
+                Debug.Log("HitEnemy");
+                if(currentEnemy != null)
+                {
+                    currentEnemy.takeDamage();
+                }
+
+            }
+            else { Debug.Log("no enemy"); }
+        }
+
         if (movePlayerState == CharacterState.IDLE)
         {
             if (Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.A)))
@@ -82,7 +111,7 @@ public class CharacterController : MonoBehaviour
         }
         else if (movePlayerState == CharacterState.RUNNING)
         {
-            if ((Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.Space))))
+            if ((Input.GetKey(KeyCode.W)))
             {
                 gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * MoveJumpStrength;
                 _PlayerStateChangd = true;
@@ -183,13 +212,58 @@ public class CharacterController : MonoBehaviour
         gameObject.GetComponent<Animator>().runtimeAnimatorController = newAnimator;
     }
 
+    public void Attack()
+    {
+        //RaycastHit2D AttackHit = Physics2D.Raycast(Vector3.up * 50f, -Vector2.up, 100f);
+        
+        //if (AttackHit.collider != null)
+        {
+            
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        {
+            if (collision.gameObject.CompareTag("enemy"))
+            {
+                InAttackRange = true;
+                currentEnemy = collision.GetComponent<enemyController>();
+            }
+            
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        {
+            if (collision.gameObject.CompareTag("enemy"))
+            {
+                InAttackRange = false;
+                currentEnemy = null;
+            }
+
+
+        }
+    }
+
+    
+        public void PlayerTakeDamage()
+        {
+        Health = Health - 15;
+            
+        }
+
+    
 
     public void UpdateFootSteps()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position - Vector3.up * 1.5f, -Vector2.up, 0.8f);
         if (movePlayerState == CharacterState.RUNNING && hit.transform.tag == "Terrain")
         {
-            Debug.Log(hit.transform.tag);
+            //Debug.Log(hit.transform.tag);
             PLAYBACK_STATE playbackstate;
             _FootStepInstance.getPlaybackState(out playbackstate);
             if (playbackstate.Equals(PLAYBACK_STATE.STOPPED))
@@ -231,7 +305,7 @@ public class CharacterController : MonoBehaviour
         }
     
 
-}
+    }
     void OnDestroy()
     {
         // Release memory

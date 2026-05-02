@@ -15,6 +15,10 @@ public enum EnemyState
 }
 public class enemyController : MonoBehaviour
 {
+    public int enemyHealth = 100;
+    public bool InAttackRange = false;
+    private CharacterController PlayerScript;
+
     private Vector3 Pos;
     public GameObject LeftWaypoint;
     public GameObject RightWaypoint;
@@ -39,6 +43,7 @@ public class enemyController : MonoBehaviour
 
     private bool _IsGoingRight = true;
     private bool _PlayerStateChangd = false;
+            public bool takinghit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +55,22 @@ public class enemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        if (InAttackRange)
+        {
+            PlayerScript = Player.GetComponent<CharacterController>();
+            if (InAttackRange)
+            {
+                takinghit = true;
+                StartCoroutine(playerTakeDmg());
+            }
+
+        }
+
         if (moveEnemyState == EnemyState.IDLE)
         {
             StartCoroutine(WaitThenRoam());
@@ -100,23 +121,45 @@ public class enemyController : MonoBehaviour
         ChangeAnimator();
     }
 
+    IEnumerator playerTakeDmg()
+    {
+        yield return new WaitForSeconds(2f);
+        PlayerScript.PlayerTakeDamage();
+        takinghit = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("LeftWaypoint"))
         {
-            if (collision.gameObject.CompareTag("LeftWaypoint"))
+            hitLeftWaypoint = true;
+            hitRightWaypoint = false;
+        }
+        if (collision.gameObject.CompareTag("RightWaypoint"))
+        {
+            hitRightWaypoint = true;
+            hitLeftWaypoint = false;
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            InAttackRange = true;
+            
+        }
+
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        {
+            if (collision.gameObject.CompareTag("Player"))
             {
-                hitLeftWaypoint = true;
-                hitRightWaypoint = false;
+                InAttackRange = false;
+                //PlayerScript = null;
             }
-            if (collision.gameObject.CompareTag("RightWaypoint"))
-            {
-                hitRightWaypoint = true;
-                hitLeftWaypoint = false;
-            }
+
 
         }
     }
-
 
     public void ChangeAnimator()
     {
@@ -140,6 +183,10 @@ public class enemyController : MonoBehaviour
         gameObject.GetComponent<Animator>().runtimeAnimatorController = newAnimator;
     }
 
+    public void takeDamage()
+    {
+        enemyHealth -= 25;
+    }
     IEnumerator WaitThenRoam()
     {
         yield return new WaitForSeconds(5);
