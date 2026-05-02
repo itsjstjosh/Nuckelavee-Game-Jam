@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{39f07d6a-3218-45f8-968b-ae59d02f7d45}">
+		<property name="assetPath">
+			<value>SFX/floraphonic-slime-splat-4-219250.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.0800000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5046f7c0-9bed-45ff-8644-d93d79e98669}</destination>
+		</relationship>
+	</object>
+</objects>
