@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +28,9 @@ public class CharacterController : MonoBehaviour
     public RuntimeAnimatorController MoveJumpingController;
 
     private Animator _MoveAnimatorComponent;
+    [field: Header("Footsteps")]
+    [field: SerializeField] public EventReference footStepsGrass { get; private set; }
+    private EventInstance _FootStepInstance;
 
     private bool _IsGoingRight = true;
     private bool _PlayerStateChangd = false;
@@ -33,6 +38,7 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _FootStepInstance = RuntimeManager.CreateInstance(footStepsGrass);
         _MoveAnimatorComponent = gameObject.GetComponent<Animator>();
         _MoveAnimatorComponent.runtimeAnimatorController = MoveIdleController;
     }
@@ -40,6 +46,7 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateFootSteps();
         _PlayerStateChangd = false; 
         if(movePlayerState == CharacterState.IDLE)
         {
@@ -167,6 +174,35 @@ public class CharacterController : MonoBehaviour
             }
         }
         gameObject.GetComponent<Animator>().runtimeAnimatorController = newAnimator;
+    }
+    public EventInstance PlayFootSteps()
+    {
+        EventInstance footStepInstance = RuntimeManager.CreateInstance(footStepsGrass);
+        // footStepInstance.start();
+        return footStepInstance;
+    }
+
+    public void UpdateFootSteps()
+    {
+        if (movePlayerState == CharacterState.RUNNING)
+
+        {
+            PLAYBACK_STATE playbackstate;
+            _FootStepInstance.getPlaybackState(out playbackstate);
+            if (playbackstate.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                _FootStepInstance.start();
+            }
+        }
+        else
+        {
+            _FootStepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+    }
+    void OnDestroy()
+    {
+        // Release memory
+        _FootStepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 }
 
