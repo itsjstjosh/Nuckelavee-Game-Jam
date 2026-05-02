@@ -2,6 +2,7 @@ using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,11 +15,13 @@ public enum EnemyState
 }
 public class enemyController : MonoBehaviour
 {
-    public float roamDistance;
     private Vector3 Pos;
-    public float frequency = 5f;
-    public float magnitude = 5f;
-    public float offset = 0f;
+    public GameObject LeftWaypoint;
+    public GameObject RightWaypoint;
+
+    private bool hitRightWaypoint = false;
+    private bool hitLeftWaypoint = false;
+    public bool roaming = false;
 
     public EnemyState moveEnemyState = EnemyState.IDLE;
 
@@ -50,12 +53,34 @@ public class enemyController : MonoBehaviour
         if (moveEnemyState == EnemyState.IDLE)
         {
             StartCoroutine(WaitThenRoam());
+            
         }
+        if (roaming)
+        {
+            moveEnemyState = EnemyState.RUNNING;
+            if (!hitRightWaypoint)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, RightWaypoint.transform.position, 2f * Time.deltaTime);
+                _IsGoingRight = false;
+            }
+            else if (!hitLeftWaypoint)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, LeftWaypoint.transform.position, 2f * Time.deltaTime);
+                _IsGoingRight = true;
+                 
+            }
+            ChangeAnimator();
+
+
+
+        }
+
 
         float distanceFromPlayer = Vector2.Distance(Player.transform.position, transform.position);
 
         if (distanceFromPlayer < 6f)
         {
+            roaming = false;
             transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, 4f * Time.deltaTime);
             moveEnemyState = EnemyState.RUNNING;
 
@@ -68,12 +93,30 @@ public class enemyController : MonoBehaviour
                 _IsGoingRight = true;
             }
         }
-        else
+        else if (!roaming && distanceFromPlayer >6)
         {
             moveEnemyState = EnemyState.IDLE;
         }
         ChangeAnimator();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        {
+            if (collision.gameObject.CompareTag("LeftWaypoint"))
+            {
+                hitLeftWaypoint = true;
+                hitRightWaypoint = false;
+            }
+            if (collision.gameObject.CompareTag("RightWaypoint"))
+            {
+                hitRightWaypoint = true;
+                hitLeftWaypoint = false;
+            }
+
+        }
+    }
+
 
     public void ChangeAnimator()
     {
@@ -99,9 +142,10 @@ public class enemyController : MonoBehaviour
 
     IEnumerator WaitThenRoam()
     {
-        Pos = transform.position;
         yield return new WaitForSeconds(5);
-        transform.position = Pos + transform.right * Mathf.Sin(Time.deltaTime * frequency + offset) * magnitude;
+
+        roaming = true;
+
         
     }
 }

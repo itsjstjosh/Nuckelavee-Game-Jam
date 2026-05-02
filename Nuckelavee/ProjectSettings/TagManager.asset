@@ -7,6 +7,8 @@ TagManager:
   - Terrain
   - stone
   - water
+  - LeftWaypoint
+  - RightWaypoint
   layers:
   - Default
   - TransparentFX
