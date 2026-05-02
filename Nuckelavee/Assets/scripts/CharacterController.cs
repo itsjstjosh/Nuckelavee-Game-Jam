@@ -2,6 +2,7 @@ using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,7 +16,7 @@ public enum CharacterState
 
 public class CharacterController : MonoBehaviour
 {
-    
+
     public CharacterState movePlayerState = CharacterState.IDLE;
 
     [Header("Movement")]
@@ -30,7 +31,11 @@ public class CharacterController : MonoBehaviour
     private Animator _MoveAnimatorComponent;
     [field: Header("Footsteps")]
     [field: SerializeField] public EventReference footStepsGrass { get; private set; }
+    [field: SerializeField] public EventReference footStepsStone { get; private set; }
     private EventInstance _FootStepInstance;
+    private EventInstance _FootStepStone;
+    [field: SerializeField] public EventReference footStepswater { get; private set; }
+    private EventInstance _FootStepwater;
 
     private bool _IsGoingRight = true;
     private bool _PlayerStateChangd = false;
@@ -38,6 +43,8 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _FootStepwater = RuntimeManager.CreateInstance(footStepswater);
+        _FootStepStone = RuntimeManager.CreateInstance(footStepsStone);
         _FootStepInstance = RuntimeManager.CreateInstance(footStepsGrass);
         _MoveAnimatorComponent = gameObject.GetComponent<Animator>();
         _MoveAnimatorComponent.runtimeAnimatorController = MoveIdleController;
@@ -47,8 +54,8 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         UpdateFootSteps();
-        _PlayerStateChangd = false; 
-        if(movePlayerState == CharacterState.IDLE)
+        _PlayerStateChangd = false;
+        if (movePlayerState == CharacterState.IDLE)
         {
             if (Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.A)))
             {
@@ -62,16 +69,16 @@ public class CharacterController : MonoBehaviour
                 {
                     _IsGoingRight = false;
                 }
-                
-            } 
+
+            }
             else if (Input.GetKey(KeyCode.W))
             {
-                gameObject.GetComponent<Rigidbody2D>().velocity =transform.up * MoveJumpStrength;
+                gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * MoveJumpStrength;
                 _PlayerStateChangd = true;
                 movePlayerState = CharacterState.JUMPING;
                 StartCoroutine("CheckGrounded");
             }
-            
+
         }
         else if (movePlayerState == CharacterState.RUNNING)
         {
@@ -100,8 +107,8 @@ public class CharacterController : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                _IsGoingRight= false;
-                transform.Translate (-transform.right * Time.deltaTime * MoveSpeed);
+                _IsGoingRight = false;
+                transform.Translate(-transform.right * Time.deltaTime * MoveSpeed);
             }
 
             ChangeAnimator();
@@ -109,7 +116,7 @@ public class CharacterController : MonoBehaviour
 
     }
 
-    IEnumerator CheckGrounded() 
+    IEnumerator CheckGrounded()
     {
         yield return new WaitForSeconds(0.5f);
 
@@ -118,7 +125,7 @@ public class CharacterController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position - Vector3.up * 1.5f, -Vector2.up, 0.8f);
             if (hit.collider != null)
             {
-                if (hit.transform.tag == "Terrain")
+                if (hit.transform.tag == "Terrain" || hit.transform.tag == "stone" || hit.transform.tag == "water")
                 {
                     if ((Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.A))))
                     {
@@ -130,10 +137,10 @@ public class CharacterController : MonoBehaviour
                     }
                     break;
                 }
-                
+
             }
             yield return new WaitForSeconds(0.05f);
-        
+
         }
 
         ChangeAnimator();
@@ -175,18 +182,14 @@ public class CharacterController : MonoBehaviour
         }
         gameObject.GetComponent<Animator>().runtimeAnimatorController = newAnimator;
     }
-    public EventInstance PlayFootSteps()
-    {
-        EventInstance footStepInstance = RuntimeManager.CreateInstance(footStepsGrass);
-        // footStepInstance.start();
-        return footStepInstance;
-    }
+
 
     public void UpdateFootSteps()
     {
-        if (movePlayerState == CharacterState.RUNNING)
-
+        RaycastHit2D hit = Physics2D.Raycast(transform.position - Vector3.up * 1.5f, -Vector2.up, 0.8f);
+        if (movePlayerState == CharacterState.RUNNING && hit.transform.tag == "Terrain")
         {
+            Debug.Log(hit.transform.tag);
             PLAYBACK_STATE playbackstate;
             _FootStepInstance.getPlaybackState(out playbackstate);
             if (playbackstate.Equals(PLAYBACK_STATE.STOPPED))
@@ -198,11 +201,44 @@ public class CharacterController : MonoBehaviour
         {
             _FootStepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
-    }
+        if (movePlayerState == CharacterState.RUNNING && hit.transform.tag == "stone")
+        {
+            Debug.Log(hit.transform.tag);
+            PLAYBACK_STATE playbackstate;
+            _FootStepStone.getPlaybackState(out playbackstate);
+            if (playbackstate.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                _FootStepStone.start();
+            }
+        }
+        else
+        {
+            _FootStepStone.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+        if (movePlayerState == CharacterState.RUNNING && hit.transform.tag == "water")
+        {
+            Debug.Log(hit.transform.tag);
+            PLAYBACK_STATE playbackstate;
+            _FootStepwater.getPlaybackState(out playbackstate);
+            if (playbackstate.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                _FootStepwater.start();
+            }
+        }
+        else
+        {
+            _FootStepwater.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+    
+
+}
     void OnDestroy()
     {
         // Release memory
         _FootStepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        _FootStepStone.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        _FootStepwater.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
+
 }
 
