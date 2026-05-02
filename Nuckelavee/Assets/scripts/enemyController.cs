@@ -67,6 +67,7 @@ public class enemyController : MonoBehaviour
             {
                 takinghit = true;
                 StartCoroutine(playerTakeDmg());
+
             }
 
         }

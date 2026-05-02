@@ -14,6 +14,7 @@ public enum CharacterState
     IDLE,
     RUNNING,
     JUMPING,
+    ATTACKING,
     DEAD
 }
 
@@ -34,6 +35,7 @@ public class CharacterController : MonoBehaviour
     public RuntimeAnimatorController MoveIdleController;
     public RuntimeAnimatorController MoveRunningController;
     public RuntimeAnimatorController MoveJumpingController;
+    public RuntimeAnimatorController AttackingController;
 
     private Animator _MoveAnimatorComponent;
     [field: Header("Footsteps")]
@@ -72,7 +74,7 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(InAttackRange)
+            if (InAttackRange)
             {
                 Debug.Log("HitEnemy");
                 if(currentEnemy != null)
@@ -209,6 +211,20 @@ public class CharacterController : MonoBehaviour
 
             }
         }
+        if (movePlayerState == CharacterState.ATTACKING)
+        {
+            newAnimator = AttackingController;
+            if (_IsGoingRight)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
+            }
+        }
         gameObject.GetComponent<Animator>().runtimeAnimatorController = newAnimator;
     }
 
@@ -252,7 +268,7 @@ public class CharacterController : MonoBehaviour
     
         public void PlayerTakeDamage()
         {
-        Health = Health - 15;
+         Health -= 15;
             
         }
 
