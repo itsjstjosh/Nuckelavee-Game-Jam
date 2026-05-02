@@ -14,6 +14,11 @@ public enum EnemyState
 }
 public class enemyController : MonoBehaviour
 {
+    public float roamDistance;
+    private Vector3 Pos;
+    public float frequency = 5f;
+    public float magnitude = 5f;
+    public float offset = 0f;
 
     public EnemyState moveEnemyState = EnemyState.IDLE;
 
@@ -42,31 +47,32 @@ public class enemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (moveEnemyState == EnemyState.IDLE)
-        //{
+        if (moveEnemyState == EnemyState.IDLE)
+        {
+            StartCoroutine(WaitThenRoam());
+        }
 
-            float distanceFromPlayer = Vector2.Distance(Player.transform.position, transform.position);
+        float distanceFromPlayer = Vector2.Distance(Player.transform.position, transform.position);
 
-            if (distanceFromPlayer < 3f)
+        if (distanceFromPlayer < 6f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, 4f * Time.deltaTime);
+            moveEnemyState = EnemyState.RUNNING;
+
+            if (Player.transform.position.x > transform.position.x)
             {
-                transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, 5f * Time.deltaTime);
-                moveEnemyState = EnemyState.RUNNING;
-
-                if (Player.transform.position.x > transform.position.x)
-                {
-                    _IsGoingRight = false;
-                }
-                else
-                {
-                    _IsGoingRight = true;
-                }
+                _IsGoingRight = false;
             }
             else
             {
-                moveEnemyState = EnemyState.IDLE;
+                _IsGoingRight = true;
             }
-        //}
-            ChangeAnimator();
+        }
+        else
+        {
+            moveEnemyState = EnemyState.IDLE;
+        }
+        ChangeAnimator();
     }
 
     public void ChangeAnimator()
@@ -89,5 +95,13 @@ public class enemyController : MonoBehaviour
         }
 
         gameObject.GetComponent<Animator>().runtimeAnimatorController = newAnimator;
+    }
+
+    IEnumerator WaitThenRoam()
+    {
+        Pos = transform.position;
+        yield return new WaitForSeconds(5);
+        transform.position = Pos + transform.right * Mathf.Sin(Time.deltaTime * frequency + offset) * magnitude;
+        
     }
 }
