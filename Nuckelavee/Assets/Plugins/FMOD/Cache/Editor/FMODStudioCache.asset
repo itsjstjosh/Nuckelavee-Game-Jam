@@ -1,0 +1,339 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7241317089740884845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/grassfootsteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/grassfootsteps
+  Guid:
+    Data1: 250477852
+    Data2: 1265737870
+    Data3: 142033812
+    Data4: 46529114
+  Banks:
+  - {fileID: 5700673719390382551}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 310
+--- !u!114 &-6557448114801678204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/stonefootsteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/stonefootsteps
+  Guid:
+    Data1: -1089864326
+    Data2: 1101764371
+    Data3: 2074811815
+    Data4: 1497344345
+  Banks:
+  - {fileID: 5700673719390382551}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 600
+--- !u!114 &-6081173998190923833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/amabince/ambianceLevel1
+  m_EditorClassIdentifier: 
+  Path: event:/amabince/ambianceLevel1
+  Guid:
+    Data1: -1978269697
+    Data2: 1249612225
+    Data3: 442424713
+    Data4: -1062827702
+  Banks:
+  - {fileID: -1392783572624857044}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 350776
+--- !u!114 &-1460695202187863725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/sowrd
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/sowrd
+  Guid:
+    Data1: 1457144375
+    Data2: 1317315211
+    Data3: -995976816
+    Data4: 154663498
+  Banks:
+  - {fileID: 5700673719390382551}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1392783572624857044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambinace.bank
+  m_EditorClassIdentifier: 
+  Path: ../audio-syteem/Build/Desktop/Ambinace.bank
+  Name: Ambinace
+  StudioPath: bank:/Ambinace
+  lastModified: 639133179982304396
+  FileSizes:
+  - Name: Desktop
+    Value: 4266688
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 4196836538509726785}
+  - {fileID: -1392783572624857044}
+  - {fileID: 1010969745129794444}
+  - {fileID: 2406347429463276388}
+  - {fileID: 5700673719390382551}
+  EditorEvents:
+  - {fileID: -6081173998190923833}
+  - {fileID: 2030332845686107247}
+  - {fileID: -7241317089740884845}
+  - {fileID: -1460695202187863725}
+  - {fileID: 7508934672653348915}
+  - {fileID: 4429924234109513697}
+  - {fileID: -6557448114801678204}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 1010969745129794444}
+  StringsBanks:
+  - {fileID: 4196836538509726785}
+  cacheVersion: 131859
+  cacheTime: 639133179983629358
+  SerializableEventsDict:
+  - key: event:/amabince/ambianceLevel1
+    index: 0
+  - key: event:/SFX/pain
+    index: 1
+  - key: event:/SFX/grassfootsteps
+    index: 2
+  - key: event:/SFX/sowrd
+    index: 3
+  - key: event:/SFX/waterfootsteps
+    index: 4
+  - key: event:/SFX/punch
+    index: 5
+  - key: event:/SFX/stonefootsteps
+    index: 6
+--- !u!114 &1010969745129794444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../audio-syteem/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639133179982335080
+  FileSizes:
+  - Name: Desktop
+    Value: 1074
+  Exists: 1
+--- !u!114 &2030332845686107247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/pain
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/pain
+  Guid:
+    Data1: -845824741
+    Data2: 1315471909
+    Data3: -561296217
+    Data4: 488830748
+  Banks:
+  - {fileID: 5700673719390382551}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &2406347429463276388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: ../audio-syteem/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 639133179982365139
+  FileSizes:
+  - Name: Desktop
+    Value: 506
+  Exists: 1
+--- !u!114 &4196836538509726785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../audio-syteem/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639133179982345126
+  FileSizes:
+  - Name: Desktop
+    Value: 1208
+  Exists: 1
+--- !u!114 &4429924234109513697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/punch
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/punch
+  Guid:
+    Data1: 1408516195
+    Data2: 1324680619
+    Data3: -72333930
+    Data4: -1785007454
+  Banks:
+  - {fileID: 5700673719390382551}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &5700673719390382551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: ../audio-syteem/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 639133179983629358
+  FileSizes:
+  - Name: Desktop
+    Value: 113184
+  Exists: 1
+--- !u!114 &7508934672653348915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/waterfootsteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/waterfootsteps
+  Guid:
+    Data1: -347678634
+    Data2: 1318161873
+    Data3: 986205341
+    Data4: 1196379481
+  Banks:
+  - {fileID: 5700673719390382551}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
