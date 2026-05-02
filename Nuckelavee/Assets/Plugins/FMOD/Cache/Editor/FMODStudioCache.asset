@@ -123,7 +123,7 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/Ambinace.bank
   Name: Ambinace
   StudioPath: bank:/Ambinace
-  lastModified: 639133179982304396
+  lastModified: 639133252043057497
   FileSizes:
   - Name: Desktop
     Value: 4266688
@@ -160,7 +160,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4196836538509726785}
   cacheVersion: 131859
-  cacheTime: 639133179983629358
+  cacheTime: 639133252043082765
   SerializableEventsDict:
   - key: event:/amabince/ambianceLevel1
     index: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639133179982335080
+  lastModified: 639133252043057497
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -238,7 +238,7 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639133179982365139
+  lastModified: 639133252043072676
   FileSizes:
   - Name: Desktop
     Value: 506
@@ -258,7 +258,7 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639133179982345126
+  lastModified: 639133252043057497
   FileSizes:
   - Name: Desktop
     Value: 1208
@@ -305,7 +305,7 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639133179983629358
+  lastModified: 639133252043082765
   FileSizes:
   - Name: Desktop
     Value: 113184
