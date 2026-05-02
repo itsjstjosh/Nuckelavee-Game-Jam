@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Terrain
+  - stone
+  - water
   layers:
   - Default
   - TransparentFX
