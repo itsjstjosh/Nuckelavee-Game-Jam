@@ -108,7 +108,7 @@ public class CharacterController : MonoBehaviour
 
         while (true)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position - Vector3.up * 1.3f, -Vector2.up, 0.5f);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position - Vector3.up * 1.5f, -Vector2.up, 0.8f);
             if (hit.collider != null)
             {
                 if (hit.transform.tag == "Terrain")
