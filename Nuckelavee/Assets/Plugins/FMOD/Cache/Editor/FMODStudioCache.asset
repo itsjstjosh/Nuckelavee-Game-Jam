@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9109183494372939344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/enemyDeath
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/enemyDeath
+  Guid:
+    Data1: -314668305
+    Data2: 1254929803
+    Data3: -490738524
+    Data4: -1374678035
+  Banks:
+  - {fileID: 1425174642962085227}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8459404339474680635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,6 +81,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4000
+--- !u!114 &-6993849811028627896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/BossHurt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/BossHurt
+  Guid:
+    Data1: 607302245
+    Data2: 1138309957
+    Data3: -1238713976
+    Data4: 2080817217
+  Banks:
+  - {fileID: 1425174642962085227}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-6939620058050079916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,10 +150,10 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639133266241171006
+  lastModified: 639133385963641926
   FileSizes:
   - Name: Desktop
-    Value: 1208
+    Value: 1470
   Exists: 1
 --- !u!114 &-4920521975912281278
 MonoBehaviour:
@@ -155,6 +209,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &-2431618889473262729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/enemy1Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/enemy1Hurt
+  Guid:
+    Data1: -1299087816
+    Data2: 1336606867
+    Data3: 1732299409
+    Data4: -1991986199
+  Banks:
+  - {fileID: 1425174642962085227}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &-1721127625157138034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,13 +289,19 @@ MonoBehaviour:
   - {fileID: -7383887437293861384}
   - {fileID: -3568645786145087440}
   - {fileID: -1721127625157138034}
+  - {fileID: 292356702916293894}
+  - {fileID: 1767386162094079215}
+  - {fileID: -2431618889473262729}
+  - {fileID: -6993849811028627896}
+  - {fileID: 7406229143219657017}
+  - {fileID: -9109183494372939344}
   EditorParameters: []
   MasterBanks:
   - {fileID: 8812778637379171935}
   StringsBanks:
   - {fileID: -6876391583680044394}
   cacheVersion: 131859
-  cacheTime: 639133384739434521
+  cacheTime: 639133385965924879
   SerializableEventsDict:
   - key: event:/amabince/ambianceLevel1
     index: 0
@@ -230,6 +317,33 @@ MonoBehaviour:
     index: 5
   - key: event:/SFX/stonefootsteps
     index: 6
+--- !u!114 &292356702916293894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/amabince/ambiance2
+  m_EditorClassIdentifier: 
+  Path: event:/amabince/ambiance2
+  Guid:
+    Data1: -1830112916
+    Data2: 1103976527
+    Data3: -1378296932
+    Data4: -38749756
+  Banks:
+  - {fileID: 6902847453948665271}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 426997
 --- !u!114 &1425174642962085227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,11 +359,38 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639133384739434521
+  lastModified: 639133385965924879
   FileSizes:
   - Name: Desktop
-    Value: 113184
+    Value: 280640
   Exists: 1
+--- !u!114 &1767386162094079215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/playerDaeth
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/playerDaeth
+  Guid:
+    Data1: -1164331475
+    Data2: 1075173938
+    Data3: 1604205726
+    Data4: 1958867296
+  Banks:
+  - {fileID: 1425174642962085227}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &2799081357152119334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,11 +433,38 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/Ambinace.bank
   Name: Ambinace
   StudioPath: bank:/Ambinace
-  lastModified: 639133266241151024
+  lastModified: 639133385963610932
   FileSizes:
   - Name: Desktop
-    Value: 4266688
+    Value: 9443904
   Exists: 1
+--- !u!114 &7406229143219657017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/BossDEATH
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/BossDEATH
+  Guid:
+    Data1: -776787788
+    Data2: 1105326316
+    Data3: -197118288
+    Data4: 1523657195
+  Banks:
+  - {fileID: 1425174642962085227}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &8812778637379171935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +480,7 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639133266241161009
+  lastModified: 639133385963641926
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -332,7 +500,7 @@ MonoBehaviour:
   Path: ../audio-syteem/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639133266241191001
+  lastModified: 639133385963674928
   FileSizes:
   - Name: Desktop
     Value: 506
