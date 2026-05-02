@@ -137,9 +137,24 @@ public class CharacterController : MonoBehaviour
     {
         RuntimeAnimatorController newAnimator = MoveIdleController;
 
-        if (movePlayerState == CharacterState.RUNNING || movePlayerState == CharacterState.JUMPING)
+        if (movePlayerState == CharacterState.RUNNING /*|| movePlayerState == CharacterState.JUMPING*/)
         {
             newAnimator = MoveRunningController;
+            if (_IsGoingRight)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
+            }
+        }
+
+        if (movePlayerState == CharacterState.JUMPING)
+        {
+            newAnimator = MoveJumpingController;
             if (_IsGoingRight)
             {
                 gameObject.GetComponent<SpriteRenderer>().flipX = false;
