@@ -19,6 +19,8 @@ public class bossController : MonoBehaviour
     public GameObject LeftWaypoint;
     public GameObject RightWaypoint;
 
+    public GameObject doordoor;
+
     private bool hitRightWaypoint = false;
     private bool hitLeftWaypoint = false;
     public bool roaming = false;
@@ -42,6 +44,8 @@ public class bossController : MonoBehaviour
     private bool _PlayerStateChangd = false;
     public bool takinghit = false;
     // Start is called before the first frame update
+
+    private bool isDead = false;
     void Start()
     {
         _MoveAnimatorComponent = gameObject.GetComponent<Animator>();
@@ -54,7 +58,9 @@ public class bossController : MonoBehaviour
     {
         if (BossHealth <= 0)
         {
+            Destroy(doordoor);
             Destroy(gameObject);
+
         }
 
         if (!takinghit)
