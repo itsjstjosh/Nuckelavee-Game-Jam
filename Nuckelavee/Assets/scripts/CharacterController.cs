@@ -14,7 +14,8 @@ public enum CharacterState
     IDLE,
     RUNNING,
     JUMPING,
-    DEAD
+    DEAD,
+    punching
 }
 
 public class CharacterController : MonoBehaviour
@@ -34,6 +35,7 @@ public class CharacterController : MonoBehaviour
     public RuntimeAnimatorController MoveIdleController;
     public RuntimeAnimatorController MoveRunningController;
     public RuntimeAnimatorController MoveJumpingController;
+    public RuntimeAnimatorController MovePunchController;
 
     private Animator _MoveAnimatorComponent;
     [field: Header("Footsteps")]
@@ -70,19 +72,7 @@ public class CharacterController : MonoBehaviour
             SceneManager.LoadScene(currentScene);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if(InAttackRange)
-            {
-                Debug.Log("HitEnemy");
-                if(currentEnemy != null)
-                {
-                    currentEnemy.takeDamage();
-                }
-
-            }
-            else { Debug.Log("no enemy"); }
-        }
+        
 
         if (movePlayerState == CharacterState.IDLE)
         {
@@ -111,6 +101,7 @@ public class CharacterController : MonoBehaviour
         }
         else if (movePlayerState == CharacterState.RUNNING)
         {
+            
             if ((Input.GetKey(KeyCode.W)))
             {
                 gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * MoveJumpStrength;
@@ -126,6 +117,37 @@ public class CharacterController : MonoBehaviour
             ChangeAnimator();
 
         }
+        
+        
+        if (movePlayerState != CharacterState.punching)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _PlayerStateChangd = true;
+                movePlayerState = CharacterState.punching;
+                StartCoroutine(backtoIdle());
+                if (InAttackRange)
+                {
+                    Debug.Log("HitEnemy");
+                    if (currentEnemy != null)
+                    {
+                        currentEnemy.takeDamage();
+                    }
+
+                }
+                else { Debug.Log("no enemy"); }
+            ChangeAnimator();
+            }
+            /*
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                _PlayerStateChangd = true;
+                movePlayerState = CharacterState.IDLE;
+            }
+            */
+        }
+        
+        
 
         if (movePlayerState == CharacterState.JUMPING || movePlayerState == CharacterState.RUNNING)
         {
@@ -145,6 +167,15 @@ public class CharacterController : MonoBehaviour
 
     }
 
+    IEnumerator backtoIdle()
+    {
+        yield return new WaitForSeconds(0.6f);
+        _PlayerStateChangd = true;
+        movePlayerState = CharacterState.IDLE;
+
+        ChangeAnimator();
+
+    }
     IEnumerator CheckGrounded()
     {
         yield return new WaitForSeconds(0.5f);
@@ -179,6 +210,21 @@ public class CharacterController : MonoBehaviour
     public void ChangeAnimator()
     {
         RuntimeAnimatorController newAnimator = MoveIdleController;
+
+        if (movePlayerState == CharacterState.punching)
+        {
+            newAnimator = MovePunchController;
+            if (_IsGoingRight)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
+            }
+        }
 
         if (movePlayerState == CharacterState.RUNNING /*|| movePlayerState == CharacterState.JUMPING*/)
         {
@@ -252,7 +298,7 @@ public class CharacterController : MonoBehaviour
     
         public void PlayerTakeDamage()
         {
-        Health = Health - 15;
+            Health = Health - 15;
             
         }
 

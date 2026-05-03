@@ -6,11 +6,13 @@ using System.Runtime.CompilerServices;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public enum EnemyState
 {
     IDLE,
     RUNNING,
+    Punching,
     DEAD
 }
 public class enemyController : MonoBehaviour
@@ -37,13 +39,14 @@ public class enemyController : MonoBehaviour
     [Header("StateSprites")]
     public RuntimeAnimatorController MoveIdleController;
     public RuntimeAnimatorController MoveRunningController;
+    public RuntimeAnimatorController MovePunchController;
     //public RuntimeAnimatorController MoveJumpingController;
 
     private Animator _MoveAnimatorComponent;
 
     private bool _IsGoingRight = true;
     private bool _PlayerStateChangd = false;
-            public bool takinghit = false;
+    public bool takinghit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,15 +63,23 @@ public class enemyController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (InAttackRange)
+        if (!takinghit)
         {
             PlayerScript = Player.GetComponent<CharacterController>();
             if (InAttackRange)
             {
                 takinghit = true;
                 StartCoroutine(playerTakeDmg());
-            }
 
+                if (moveEnemyState != EnemyState.Punching)
+                {
+                    moveEnemyState = EnemyState.Punching;
+                    ChangeAnimator();
+                    //_PlayerStateChangd
+
+                }
+            }
+            
         }
 
         if (moveEnemyState == EnemyState.IDLE)
@@ -92,14 +103,13 @@ public class enemyController : MonoBehaviour
             }
             ChangeAnimator();
 
-
-
         }
 
+        
 
         float distanceFromPlayer = Vector2.Distance(Player.transform.position, transform.position);
 
-        if (distanceFromPlayer < 6f)
+        if (distanceFromPlayer < 6f && !InAttackRange)
         {
             roaming = false;
             transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, 4f * Time.deltaTime);
@@ -113,6 +123,8 @@ public class enemyController : MonoBehaviour
             {
                 _IsGoingRight = true;
             }
+
+
         }
         else if (!roaming && distanceFromPlayer >6)
         {
@@ -168,6 +180,21 @@ public class enemyController : MonoBehaviour
         if (moveEnemyState == EnemyState.RUNNING)
         {
             newAnimator = MoveRunningController;
+            if (_IsGoingRight)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
+            }
+        }
+
+        if (moveEnemyState == EnemyState.Punching)
+        {
+            newAnimator = MovePunchController;
             if (_IsGoingRight)
             {
                 gameObject.GetComponent<SpriteRenderer>().flipX = false;
