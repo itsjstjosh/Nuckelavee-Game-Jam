@@ -11,6 +11,8 @@ TagManager:
   - RightWaypoint
   - enemy
   - Boss
+  - DeathZone
+  - LevelDoor
   layers:
   - Default
   - TransparentFX

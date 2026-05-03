@@ -290,7 +290,15 @@ public class CharacterController : MonoBehaviour
                 bossScript = collision.GetComponent<bossController>();
             }
             
+            if(collision.gameObject.CompareTag("DeathZone"))
+            {
+                Health = 0;
+            }
 
+            if (collision.gameObject.CompareTag("LevelDoor"))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 
@@ -317,7 +325,10 @@ public class CharacterController : MonoBehaviour
         public void PlayerTakeDamage()
         {
             Health = Health - 15;
-            
+        
+            GetComponent<SpriteRenderer>().color = Color.red;
+            StartCoroutine(whitecolor());
+        
         }
 
     
@@ -376,6 +387,13 @@ public class CharacterController : MonoBehaviour
         _FootStepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         _FootStepStone.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         _FootStepwater.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
+    IEnumerator whitecolor()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<SpriteRenderer>().color = Color.white;
+        
     }
 
 }
