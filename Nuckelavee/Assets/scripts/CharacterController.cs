@@ -1,12 +1,7 @@
 using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.Burst.CompilerServices;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public enum CharacterState
