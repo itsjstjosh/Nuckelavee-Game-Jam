@@ -23,7 +23,8 @@ public class CharacterController : MonoBehaviour
 
     public int Health = 100;
     public bool InAttackRange = false;
-    private enemyController currentEnemy;
+    [SerializeField] private enemyController currentEnemy;
+    [SerializeField] private bossController bossScript;
 
     public CharacterState movePlayerState = CharacterState.IDLE;
 
@@ -132,6 +133,11 @@ public class CharacterController : MonoBehaviour
                     if (currentEnemy != null)
                     {
                         currentEnemy.takeDamage();
+                    }
+                    
+                    if (bossScript != null)
+                    {
+                        bossScript.takeDamage();
                     }
 
                 }
@@ -278,6 +284,12 @@ public class CharacterController : MonoBehaviour
                 currentEnemy = collision.GetComponent<enemyController>();
             }
             
+            if (collision.gameObject.CompareTag("Boss"))
+            {
+                InAttackRange = true;
+                bossScript = collision.GetComponent<bossController>();
+            }
+            
 
         }
     }
@@ -289,6 +301,12 @@ public class CharacterController : MonoBehaviour
             {
                 InAttackRange = false;
                 currentEnemy = null;
+            }
+            
+            if (collision.gameObject.CompareTag("Boss"))
+            {
+                InAttackRange = false;
+                bossScript = null;
             }
 
 

@@ -10,6 +10,7 @@ TagManager:
   - LeftWaypoint
   - RightWaypoint
   - enemy
+  - Boss
   layers:
   - Default
   - TransparentFX

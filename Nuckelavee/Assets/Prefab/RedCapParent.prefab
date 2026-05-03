@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 3088654912064330403}
   - component: {fileID: 4480526196647432248}
   - component: {fileID: 343888326234679205}
+  - component: {fileID: 3214265711579594590}
   m_Layer: 0
   m_Name: RedcapSprite
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9f37d3c11fb28479b546febc2a1f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 100
+  InAttackRange: 0
   LeftWaypoint: {fileID: 1858160590745915751}
   RightWaypoint: {fileID: 1830628150280987548}
   roaming: 0
@@ -129,6 +132,8 @@ MonoBehaviour:
   Player: {fileID: 0}
   MoveIdleController: {fileID: 9100000, guid: 9eaaa1895bcac294b9a9f66123bbb358, type: 2}
   MoveRunningController: {fileID: 9100000, guid: 98c41075b8c468645846e23e4b286f04, type: 2}
+  MovePunchController: {fileID: 9100000, guid: 441fa762419494f4ea4cba0db573ddef, type: 2}
+  takinghit: 0
 --- !u!61 &4480526196647432248
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -201,6 +206,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &3214265711579594590
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692974824968675528}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.018021822, y: 0.048730284}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9894977, y: 0.77265507}
+  m_EdgeRadius: 0
 --- !u!1 &1830628150280987548
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,8 +278,8 @@ Transform:
   m_GameObject: {fileID: 1830628150280987548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.28, y: -0.54, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.92, y: -0.54, z: 0}
+  m_LocalScale: {x: 0.074999, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743241538611245518}
@@ -358,8 +408,8 @@ Transform:
   m_GameObject: {fileID: 1858160590745915751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.04, y: -0.53999996, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.83, y: -0.53999996, z: 0}
+  m_LocalScale: {x: 0.114375, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743241538611245518}
@@ -472,7 +522,7 @@ GameObject:
   - component: {fileID: 1743241538611245518}
   m_Layer: 0
   m_Name: RedCapParent
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,7 +536,7 @@ Transform:
   m_GameObject: {fileID: 2939549508962815491}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.523779, y: -2.94, z: 0}
+  m_LocalPosition: {x: -0.99, y: -3.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
