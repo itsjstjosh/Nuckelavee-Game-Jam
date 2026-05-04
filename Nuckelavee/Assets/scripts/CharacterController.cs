@@ -1,6 +1,7 @@
 using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,8 +16,9 @@ public enum CharacterState
 
 public class CharacterController : MonoBehaviour
 {
-
-    public int Health = 100;
+    public TextMeshProUGUI healthDisplay;
+    public int Health = 150;
+    public int maxHealth = 150;
     public bool InAttackRange = false;
     [SerializeField] private enemyController currentEnemy;
     [SerializeField] private bossController bossScript;
@@ -59,6 +61,9 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (healthDisplay != null)
+            healthDisplay.SetText(Health + " / " + maxHealth);
+
         UpdateFootSteps();
         _PlayerStateChangd = false;
 
